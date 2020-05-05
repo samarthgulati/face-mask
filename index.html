@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face-mask</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <video muted id="webcam"></video>
+  <canvas id="faceCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+  <!-- <script src="lib/tf-js-core.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+  <!-- <script src="lib/tf-js-converter.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
+  <!-- <script src="lib/tf-js-facemesh.js"></script> -->
+  <script src="lib/triangulation.js"></script>
+  <script src="js/calculateNormals.js"></script>
+  <script src="js/textureMap.js"></script>
+  <script src="js/m4.js"></script>
+  <script src="js/webgl-utils.js"></script>
+  <script src="js/FaceMask.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

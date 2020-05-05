@@ -1,0 +1,30 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  touch-action: none;
+  pointer-events: none;
+  margin: 0;
+  display: flex;
+}
+
+#faceCanvas,
+#webcam {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+}
+
+#webcam {
+  /* opacity: 0; */
+  filter: hue-rotate(20deg) brightness(.25) contrast(1.25);
+  transform: scaleX(-1);
+}
+
+#faceCanvas {
+  /* filter: grayscale(1) brightness(2) contrast(0.5); */
+  /* filter: hue-rotate(45deg) brightness(1.5) contrast(0.75); */
+  transform: scaleX(-1);
+  /* mix-blend-mode: hard-light; */
+}
