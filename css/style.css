@@ -20,7 +20,8 @@ html, body {
 
 #faceCanvas,
 #webcam,
-#background {
+#background,
+#loader {
   width: 100vw !important;
   height: 100vh !important;
   object-fit: cover;
@@ -38,4 +39,12 @@ html, body {
   /* filter: hue-rotate(45deg) brightness(1.5) contrast(0.75); */
   transform: scaleX(-1);
   /* mix-blend-mode: hard-light; */
+}
+
+#loader {
+ background: rgba(255,255,255,0.75);
+ z-index: 100;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }

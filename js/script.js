@@ -16,6 +16,8 @@ async function renderPredictions(t) {
         w, h
       }
       faceCanvas = new FaceMask(props);
+      console.log('done');
+      document.querySelector('#loader').style.display = 'none';
       return;
     } 
     faceCanvas.render(positionBufferData);

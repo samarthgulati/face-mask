@@ -1,0 +1,70 @@
+
+Finally got around to polish the rough edges of face mask demo, and port it over to @mrdoob 's ThreeJS.
+I am using @prajil_ 's amazing illustration of face paint done during some thousand-year-old traditions called Theyyam practiced in Southern India.
+
+It has been a journey re-visiting WebGL since my first interaction at @GROW_Paris , so a debt of gratitude is in order.
+
+Firstly to @leondenise and @mattdesl for their workshops at Grow that removed my apprehensions around all the unwieldy code it takes to setup WebGL.
+I am still making my way though all the amazing material taught during those workshops.
+
+Next up to @yiwen_lin and @bfarrellforever for encouraging to go VanillaJS first to build a solid foundations, before picking up a framework,
+and in that vein to @greggman for in depth tutorials at WebGL Fundamentals.
+
+Then to @jason_mayes , @GreenBeanDou and rest of the TensorFlowJS team for sharing their projects for creators to explore and build upon them. 
+
+And of course to @imp8lite and @kps_foo for bearing with me and helping with the UV unwrapping of the mesh.
+
+Watch this space for more, I am working on some ideas using this as an initial seed project.
+
+
+
+Finally got around to polish the rough edges of face mask demo.
+So it all started with a weekend hacking around with TFJS.
+I had been exposed to WebGL through workshop by @instructor at @GROW 
+but couldn't find a project to work on it since then.
+yiwin @ grow had suggested to start with vanillaJS and 
+it was something that resonated with me since my days at Adobe working with @ ben and patrick
+So I set out to go through the amazing WebGL Fundamentals series by @asdfads
+I had only reached till rendering points and triangles that I got pulled into another project.
+Co-incidentally when I looked at TFjs Facemesh codebase it was returning a bunch of vertices.
+I plugged the output from it to my bare bones WebGL code, and to my surprise it worked, 
+even though I had dropped the z values altogether
+Poking around I found the Triangulation file in the repository, 
+I re-arranged the points predicted in the order before sending to webgl
+and changed primitive to triangles, there it was, a plane mesh covering my face.
+Time to get ambitious, I saw there is a 3D mesh image in the repository 
+which looked eerily like a UV unwrap of the 3d facemesh model
+I remembered reading about texture mapping in the Fundamentals course
+But it required coordinates of points in the image to map the texture to vertices in the mesh
+I looked around in the repository, no luck. 
+Went through the linked research paper, it mentioned of a few standard 3D face models, 
+I looked around over the internet for them, but nothing specific around unwrapping techniques of UV coordinates.
+The paper also mentioned 468 unique points put up by Google engineers for AR purposes.
+That meant the facemesh in use is not adhering to the standard 3D face meshes.
+As a last ditch effort I reached out to the folks at Google, 
+but they didn't have the code that generated the image as well.
+That left me to map these points manually. 
+I opened Inkscape and started hand labelling the left side of the face.
+Luckily I was collaborating for a side project on facemesh with Imp8lite that time
+So once I was done with the left side, he graciously mapped the left half to the right side
+With all the points in place, I loaded them up into the code. It was a moment of reckoning. 
+Holding my breath, I hit refresh, and to my elation, it worked!
+Yes, there were a few mismatches and manual errors, but those were easy to iron out.
+So now was the fun part, picking up images of faces, pasting them on the texture, 
+and seeing how they look in 3d on top of your face.
+Mind you all this was still happening in 2D, I wasn't using the z coordinates at all.
+Just the face that the points reflected motion so well, 
+that their projection on a 2D plane gave the illusion of depth
+But pasting assets on the texture was a pain. 
+To get a good representation of each 3D vertex in a 2D plane, the points had to be spread out.
+The unwrap might be good for high fidelity textures, but to play around and have quick results
+it was a pain stretching and warping a 2D image to get a similar proportion rendering in 3D.
+So back to drawing board. I looked around UV unwrapping techniques. 
+What 3D softwares use for complex geometries like faces. I was talking to @kpsfoo
+and he suggested to try doing the unwrapping on my own. Taking the advice, I thought where can I find a 3D facemesh model
+I thought if ThreeJS can import a 3D model, it should have a way to export it as well.
+There it was, now I didn't want to port the whole thing over to ThreeJS to get a model output.
+I looked under the hood, what makes up an obj file, and it turned out to be sort of like a tsv with all the vertices.
+I wrote a script that converted the predictions to that format, and there it was, in preview a 3d model of what supposed to be my face.
+I opened it up in blender. At first I couldn't find it, but scrolling around I found it as a gigantic face out side the field of view.
+I checked the options 
