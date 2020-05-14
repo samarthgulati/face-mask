@@ -48,3 +48,22 @@ html, body {
  align-items: center;
  justify-content: center;
 }
+
+#loader .eyes,
+#features {
+  animation-duration: 4s;
+  animation-name: look-around;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes look-around {
+  from {
+    transform: translateX(-5px);
+  }
+
+  to {
+    transform: translateX(5px);
+  }
+}
