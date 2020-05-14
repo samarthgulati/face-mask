@@ -11,6 +11,7 @@ async function renderPredictions(t) {
     if(!faceCanvas) {
       const props = {
         id: 'faceCanvas',
+        // https://dribbble.com/shots/4875818-Theyyam
         textureFilePath: 'assets/mesh_map_theyyam.jpg', 
         w, h
       }
