@@ -6,20 +6,30 @@ html, body {
   pointer-events: none;
   margin: 0;
   display: flex;
+  overflow: hidden;
+  background-image: url('../assets/background.png');
+  background-size: 35%;
+  background-repeat: repeat;
+}
+
+#background {
+  background-image: radial-gradient(rgb(132, 0, 0), rgb(87, 0, 0));
+  mix-blend-mode: multiply;
 }
 
 #faceCanvas,
-#webcam {
-  width: 100vw;
-  height: 100vh;
+#webcam,
+#background {
+  width: 100vw !important;
+  height: 100vh !important;
   object-fit: cover;
   position: absolute;
 }
 
 #webcam {
-  /* opacity: 0; */
-  filter: hue-rotate(20deg) brightness(.25) contrast(1.25);
-  transform: scaleX(-1);
+  opacity: 0;
+  /* filter: hue-rotate(20deg) brightness(.25) contrast(1.25);
+  transform: scaleX(-1); */
 }
 
 #faceCanvas {

@@ -8,18 +8,19 @@
 </head>
 <body>
   <video muted id="webcam"></video>
+  <div id="background"></div>
   <canvas id="faceCanvas"></canvas>
+  <script src="lib/triangulation.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
   <!-- <script src="lib/tf-js-core.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
   <!-- <script src="lib/tf-js-converter.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
   <!-- <script src="lib/tf-js-facemesh.js"></script> -->
-  <script src="lib/triangulation.js"></script>
-  <script src="js/calculateNormals.js"></script>
-  <script src="js/textureMap.js"></script>
-  <script src="js/m4.js"></script>
-  <script src="js/webgl-utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <!-- <script src="lib/three.js"></script> -->
+  <script src="js/positionBufferData.js"></script>
+  <script src="js/frontProjectionUVMap.js"></script>
   <script src="js/FaceMask.js"></script>
   <script src="js/script.js"></script>
 </body>

@@ -1,20 +1,20 @@
 (function() {
-var webcam = document.querySelector('#webcam');
-var model, faceCanvas, w, h;
+const webcam = document.querySelector('#webcam');
+let model, faceCanvas, w, h;
 async function renderPredictions(t) {
   requestAnimationFrame(renderPredictions);
   const predictions = await model.estimateFaces(webcam);
 
   if (predictions.length > 0) {
     // var positionBufferData = TRIANGULATION.reduce((acc, val) => acc.concat(predictions[0].scaledMesh[val]), []);
-    var positionBufferData = predictions[0].scaledMesh.reduce((acc, pos) => acc.concat(pos), []);
-    var normalBufferData = calculateNormals(TRIANGULATION, positionBufferData);
+    const positionBufferData = predictions[0].scaledMesh.reduce((acc, pos) => acc.concat(pos), []);
     if(!faceCanvas) {
       const props = {
-        textureFilePath: 'assets/mesh_map.jpg', 
-        w, h, positionBufferData, normalBufferData
+        id: 'faceCanvas',
+        textureFilePath: 'assets/mesh_map_theyyam.jpg', 
+        w, h
       }
-      faceCanvas = new FaceMask('faceCanvas', props);
+      faceCanvas = new FaceMask(props);
       return;
     } 
     faceCanvas.render(positionBufferData);
@@ -22,7 +22,7 @@ async function renderPredictions(t) {
 }
 async function main() {
   try {
-    var stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
     webcam.srcObject = stream;
     await new Promise(function(res) {
       webcam.onloadedmetadata = function() {
