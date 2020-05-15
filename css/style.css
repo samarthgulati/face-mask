@@ -5,15 +5,16 @@ html, body {
   margin: 0;
   display: flex;
   overflow: hidden;
+}
+
+#background {
+  /* background-image: radial-gradient(rgb(132, 0, 0), rgb(87, 0, 0)); */
+  background-color: rgb(87, 0, 0);
   /* https://www.freepik.com/free-vector/seamless-pattern-tile_2554140.htm */
   background-image: url('../assets/background.png');
   background-size: 35%;
   background-repeat: repeat;
-}
-
-#background {
-  background-image: radial-gradient(rgb(132, 0, 0), rgb(87, 0, 0));
-  mix-blend-mode: multiply;
+  background-blend-mode: multiply;
 }
 
 #faceCanvas,
@@ -50,13 +51,12 @@ html, body {
 }
 
 #loader {
- background: rgba(255,255,255,0.75);
+ background: rgba(255,255,255,0.5);
+ mix-blend-mode: screen;
  z-index: 100;
  display: flex;
  align-items: center;
  justify-content: center;
- pointer-events: none;
- touch-action: none;
 }
 
 #loader .eyes,
