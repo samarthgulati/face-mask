@@ -1,6 +1,18 @@
 (function() {
 const webcam = document.querySelector('#webcam');
 let model, faceCanvas, w, h;
+const toggleBtn = document.querySelector('#visibilityToggle');
+const toggleBtnLabel = document.querySelector('#visibilityToggle > span');
+function toggleWebcamVisibility(e) {
+  toggleBtn.classList.toggle('on');
+  webcam.classList.toggle('visible');
+  if(toggleBtn.classList.contains('on')) {
+    toggleBtnLabel.textContent = 'Webcam hidden';
+  } else {
+    toggleBtnLabel.textContent = 'Webcam visible';
+  }
+}
+toggleBtn.addEventListener('click', toggleWebcamVisibility);
 async function renderPredictions(t) {
   requestAnimationFrame(renderPredictions);
   const predictions = await model.estimateFaces(webcam);
@@ -16,7 +28,6 @@ async function renderPredictions(t) {
         w, h
       }
       faceCanvas = new FaceMask(props);
-      console.log('done');
       document.querySelector('#loader').style.display = 'none';
       return;
     } 
