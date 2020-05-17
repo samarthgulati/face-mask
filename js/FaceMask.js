@@ -21,7 +21,7 @@ class FaceMask {
 		const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2);
 		this._scene.add(light);
 		const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-		directionalLight.position.set(this._halfW, this._halfW * 0.5, -1000).normalize();
+		directionalLight.position.set(this._halfW, this._halfH * 0.5, -1000).normalize();
 		this._scene.add(directionalLight);
 	}
 
@@ -52,7 +52,6 @@ class FaceMask {
 			shininess: Math.pow(2, alpha * 10),
 		});
 	}
-
 	_setupScene() {
 		this._scene = new THREE.Scene();
 		this._addCamera();
@@ -69,7 +68,6 @@ class FaceMask {
 		this._geometry.attributes.position.needsUpdate = true;
 
 		this._renderer.render(this._scene, this._camera);
-
 	}
 
 	constructor({
